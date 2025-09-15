@@ -11,7 +11,7 @@ public class MyHashDriver {
 
     public static void main(String[] args) {
         //строка с повторяющимися символами
-        String repeatedChars = "a;lksulas;diva;lksjdfiva;las;dfuw8jsssk2o";
+        String repeatedChars = "a;lksulas;diva;lksjdfiva;las;dfuw8jsssk2ok";
 
         //учебная самописная хэш-таблица
         MyHashMap myMap = new MyHashMap();
