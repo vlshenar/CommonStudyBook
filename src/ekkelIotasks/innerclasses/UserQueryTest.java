@@ -1,9 +1,10 @@
 package ekkelIotasks.innerclasses;
 
 import ekkelIotasks.innerclasses.usersqueryes.User;
+import ekkelIotasks.innerclasses.usersqueryes.UserV2;
 
 /**
- * задание под номером 1 с сайта
+ * задания под номером 1 и 2 с сайта
  * www.examclouds.com/ru/java/java-core-russian/lesson14-tasks
  */
 
@@ -21,5 +22,10 @@ public class UserQueryTest {
 
         //3
         new User("katenilson@yahuu.com", "password3").new Query().printToLog();
+
+        // задание номер 2 с сайта
+        // www.examclouds.com/ru/java/java-core-russian/lesson14-tasks
+        // метод createQuery() создает локальный внутренний класс
+        new UserV2("Bob", "weakPassword").createQuery();
     }
 }

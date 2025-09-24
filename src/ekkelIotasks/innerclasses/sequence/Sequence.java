@@ -1,10 +1,11 @@
 package ekkelIotasks.innerclasses.sequence;
 
 /**
- * Задача из книги Брюса Эккеля по теме внутренние классы:
- * создайте класс, который содержит String и метод toString()
+ * Задачи из книги Брюса Эккеля по теме внутренние классы:
+ * 1) создайте класс, который содержит String и метод toString()
  * для вывода хранимой строки, добавьте несколько экземпляров
  * нового класса в объект Sequence и выведите их.
+ * 2) Реализуйте reverseSelector в классе Sequence
  */
 
 public class Sequence {
@@ -43,7 +44,33 @@ public class Sequence {
         }
     }
 
+    //обратный селектор (задание 2)
+    private class ReverseSequenceSelector implements Selector{
+
+        int i = items.length;
+
+        @Override
+        public boolean end() {
+            return i == 0;
+        }
+
+        @Override
+        public Object current() {
+            return items[i-1];
+        }
+
+        @Override
+        public void next() {
+            //перебирает массив в обратном порядке
+            if(i > 0) i--;
+        }
+    }
+
     public Selector selector() {
         return new SequenceSelector();
+    }
+
+    public Selector reverseSelector(){
+        return new ReverseSequenceSelector();
     }
 }

@@ -4,10 +4,11 @@ import ekkelIotasks.innerclasses.sequence.Selector;
 import ekkelIotasks.innerclasses.sequence.Sequence;
 
 /**
- * Задача из книги Брюса Эккеля по теме внутренние классы:
- * создайте класс, который содержит String и метод toString()
+ * Задачи из книги Брюса Эккеля по теме внутренние классы:
+ * 1) создайте класс, который содержит String и метод toString()
  * для вывода хранимой строки, добавьте несколько экземпляров
  * нового класса в объект Sequence и выведите их.
+ * 2) Реализуйте reverseSelector в классе Sequence
  */
 
 public class SequenceTest {
@@ -26,8 +27,17 @@ public class SequenceTest {
         Selector selector = sequence.selector();
 
         while (!selector.end()) {
-            System.out.println(selector.current());
+            System.out.print(selector.current() + " ");
             selector.next();
+        }
+
+        //создание обратного селектора (задание 2)
+        Selector reverseSelector = sequence.reverseSelector();
+
+        System.out.println("\nПеречисление в обратном порядке");
+        while(!reverseSelector.end()){
+            System.out.print(reverseSelector.current() + " ");
+            reverseSelector.next();
         }
     }
 }
