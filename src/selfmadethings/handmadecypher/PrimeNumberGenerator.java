@@ -1,10 +1,14 @@
 package selfmadethings.handmadecypher;
 
+/**
+ * Шифрование с помощью открытого ключа
+ */
+
 //генератор простого числа
-public class PrimeNumberGenerator {
+ class PrimeNumberGenerator {
     //вернуть первое простое число, которое больше
     //заданного произвольного числа
-   public static long generate(long floor) {
+     static long generate(long floor) {
         long prime = 0;
         long bound = Long.MAX_VALUE;
         outer:
@@ -18,5 +22,23 @@ public class PrimeNumberGenerator {
            }
         }
         return prime;
+    }
+
+    // Наибольший общий делитель
+    static int grandCommonDivider(int a, int b) {
+        int r;
+        while (b != 0) {
+            r = a%b;
+            a = b;
+            b = r;
+        }
+        return a;
+    }
+
+    //возвращает нечетное число больше данного
+    static int getNoparity(int floor) {
+       floor++;
+       while(floor%2 == 0) floor++;
+       return floor;
     }
 }
