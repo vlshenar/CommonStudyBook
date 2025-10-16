@@ -6,6 +6,7 @@ import java.util.LinkedList;
 /**
  * 12. Напишите Java-программу для удаления указанного элемента из связанного списка.
  * 13. Напишите программу на Java для удаления первого и последнего элемента из связанного списка.
+ * 14. Напишите программу на Java, чтобы удалить все элементы из связанного списка.
  */
 
 public class LinkedTest4 {
@@ -23,8 +24,14 @@ public class LinkedTest4 {
         System.out.println(LinkedTest3.getDataOfList(list));
 
         //задание 13
-        list.removeFirst(); list.removeLast();
+        list.removeFirst();
+        list.removeLast();
         System.out.println("Удаление первого и последнего элемента из списка\n" +
                 LinkedTest3.getDataOfList(list));
+
+        //задание 14
+        System.out.println("Удаление всех элементов в списке");
+        list.removeAll(list);
+        System.out.println(list);
     }
 }

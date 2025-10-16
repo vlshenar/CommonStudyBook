@@ -12,7 +12,7 @@ import java.util.ListIterator;
  */
 
 public class LinkedTest1 {
-    private final static String[] fruits = {"apple", "orange", "qiwi", "melon", "lime",
+    final static String[] fruits = {"apple", "orange", "qiwi", "melon", "lime",
             "banana", "pear", "watermelon", "garnet", "pineapple"};
 
     public static void main(String[] args) {
