@@ -28,8 +28,9 @@ public class Items {
     }
 
     public ArrayList<String> getBound(int size) {
+        if (itemNumber >= items.length) return new ArrayList<>();
         String[] bound = new String[size];
-        System.arraycopy(items, 0, bound, 0, size);
+        System.arraycopy(items, itemNumber, bound, 0, size);
         itemNumber = size;
         return new ArrayList<>(Arrays.asList(bound));
     }

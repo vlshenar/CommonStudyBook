@@ -1,5 +1,8 @@
 package collectiontask.arraylisttest;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -27,6 +30,27 @@ public class WorkShopHolder {
     //возвращает массив-список объектов Employee неотсортированный
     public ArrayList<Employee> getWorkshop() {
         return workshop;
+    }
+
+    //
+    public ArrayList<Employee> getExtendWorkshop() {
+        ArrayList<Employee> list = new ArrayList<>(workshop);
+        try(BufferedReader reader = new BufferedReader(
+                new FileReader("src/resources/employees.txt"))) {
+            String s;
+            while((s = reader.readLine()) != null)
+                list.add(hireEmployee(s));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
+    //создает объект Employee по данным из строки
+    private Employee hireEmployee(String emplData) {
+        String[] employeeProperties = emplData.split(" ");
+        return new Employee(employeeProperties[0], employeeProperties[1],
+                Double.parseDouble(employeeProperties[2]));
     }
 }
 

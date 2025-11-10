@@ -1,5 +1,7 @@
 package collectiontask.arraylisttest;
 
+import java.util.Objects;
+
 /**
  * Напишите программу на Java для сортировки заданного списка массивов.
  */
@@ -7,8 +9,8 @@ package collectiontask.arraylisttest;
 public class Employee implements Comparable<Object> {
     //основные поля класса
     private final String name;
-    private final String position;
-    private final double salary;
+    private  String position;
+    private  double salary;
 
     //конструктор
     public Employee(String n, String p, double sal) {
@@ -22,12 +24,52 @@ public class Employee implements Comparable<Object> {
         return salary;
     }
 
+    //остальные геттеры
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    //сеттеры
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
     //метод из интерфейса Comparable, необходимый для сортировки
     //сортировка будет по величине зарплаты
     @Override
     public int compareTo(Object o) {
         Employee anotherWorker = (Employee) o;
         return Double.compare(salary, anotherWorker.getSalary());
+    }
+
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject)
+            return true;
+        if(otherObject == null)
+            return false;
+        if(getClass() != otherObject.getClass())
+            return false;
+        Employee other = (Employee)otherObject;
+        return Objects.equals(name, other.name) && Objects.equals(position, other.position)
+                && salary == other.salary;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 31;
+        hash = hash * 31 + Objects.hashCode(name);
+        hash = hash * 31 + Objects.hashCode(position);
+        hash = hash * 31 + Double.hashCode(salary);
+        return hash;
     }
 
     //вывод всей информации о работнике

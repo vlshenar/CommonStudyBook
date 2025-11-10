@@ -1,0 +1,8 @@
+Liam engineer 4500.0
+Noah turner 2700.0
+Mason manager 7000.0
+Oliver mechanic 2200.50
+Jacob mechanic 2100.0
+Olivia accountant 3100.0
+Emma operator 2600.0
+Sophia accountant 2900.0
