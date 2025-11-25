@@ -6,7 +6,7 @@ import java.util.Objects;
  * Напишите программу на Java для сортировки заданного списка массивов.
  */
 //класс, объекты которого нужно сравнить
-public class Employee implements Comparable<Object> {
+public class Employee implements Comparable<Employee> {
     //основные поля класса
     private final String name;
     private  String position;
@@ -45,9 +45,8 @@ public class Employee implements Comparable<Object> {
     //метод из интерфейса Comparable, необходимый для сортировки
     //сортировка будет по величине зарплаты
     @Override
-    public int compareTo(Object o) {
-        Employee anotherWorker = (Employee) o;
-        return Double.compare(salary, anotherWorker.getSalary());
+    public int compareTo(Employee anotherEmployee) {
+        return Double.compare(salary, anotherEmployee.getSalary());
     }
 
     @Override
