@@ -23,5 +23,6 @@ public class ArrayMergeTest {
         System.out.println(Arrays.toString(arrayResult));
 
         System.out.println("place of value: " + BinarySearch.search(11, arrayResult));
+        System.out.println("Recursion search result: " + BinarySearch.recSearch(11, arrayResult));
     }
 }
