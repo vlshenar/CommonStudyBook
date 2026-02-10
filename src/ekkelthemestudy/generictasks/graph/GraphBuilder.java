@@ -18,7 +18,7 @@ public class GraphBuilder {
             }
             int i = 0;
             while ((s = reader.readLine()) != null) {
-                graph.get(i++).mainNode.setItem(Integer.parseInt(s));
+                graph.setItem(i++, Integer.parseInt(s));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -37,7 +37,7 @@ public class GraphBuilder {
             }
             int i = 0;
             while ((s = reader.readLine()) != null) {
-                graph.get(i++).mainNode.setItem(s);
+                graph.setItem(s, i++);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -56,8 +56,27 @@ public class GraphBuilder {
             }
             int i = 0;
             while ((s = reader.readLine()) != null) {
-                graph.get(i++).mainNode.setItem(Double.parseDouble(s));
+                graph.setItem(Double.parseDouble(s), i++);
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return graph;
+    }
+
+    public WeightedGraph wgBuild(String graphFile) {
+        WeightedGraph graph;
+        try(BufferedReader reader = new BufferedReader(new FileReader(graphFile))) {
+            String s = reader.readLine();
+            graph = new WeightedGraph(Integer.parseInt(s));
+            while(!(s = reader.readLine()).equals(keyWord)) {
+                String[] tmp = s.split("\\s");
+                graph.addEdge(Integer.parseInt(tmp[0]), Integer.parseInt(tmp[1]),
+                        Double.parseDouble(tmp[2]));
+            }
+            int i = 0;
+            while((s = reader.readLine()) != null)
+                graph.setValue(i++, Double.parseDouble(s));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

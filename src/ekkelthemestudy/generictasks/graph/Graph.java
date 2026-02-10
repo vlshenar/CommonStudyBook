@@ -1,26 +1,29 @@
 package ekkelthemestudy.generictasks.graph;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Graph<T> extends ArrayList<Adjacency> {
-    private int vertex;
+    private final int vertex;
     private int edges = 0;
+    private final HashMap<Integer, T> items;
 
     //конструктор
     public Graph(int nodes) {
         vertex = nodes;
         for (int i = 0; i< nodes; i++)
             add(new Adjacency(new Node(i)));
+        items = new HashMap<>();
     }
 
     //сообщает содержимое вершине
     public void setItem(T item, int node) {
-        this.get(node).mainNode.setItem(item);
+        items.put(node, item);
     }
 
     //возвращает содержимое вершины
     public T getItem(int node) {
-        return (T) this.get(node).mainNode.getItem();
+        return items.get(node);
     }
 
     //добавить ребро
@@ -54,7 +57,15 @@ public class Graph<T> extends ArrayList<Adjacency> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("This is graph\n");
-        for (Adjacency a: this) result.append(a.adjacencyAsSentence());
+        for (Adjacency a: this) {
+            result.append(a.mainNode.id).append(": ");
+            result.append(items.get(a.mainNode.id));
+            for (Node n: a) {
+                result.append(" --> ").append(n.id);
+                result.append(": ").append(items.get(n.id));
+            }
+            result.append("\n");
+        }
         return result.toString();
     }
 }

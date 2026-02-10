@@ -11,14 +11,4 @@ import java.util.ArrayList;
         this.mainNode = mainNode;
     }
 
-    String adjacencyAsSentence() {
-         StringBuilder result = new StringBuilder();
-         result.append(mainNode.id);
-         for(Node n: this) {
-             String s = "->" + n.id + ((n.getItem()!=null)?(": " + n.getItem()):"");
-             result.append(s);
-         }
-         result.append(".\n");
-         return result.toString();
-    }
 }

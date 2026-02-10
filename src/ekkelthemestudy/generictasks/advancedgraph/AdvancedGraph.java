@@ -5,10 +5,12 @@ import java.util.HashMap;
 
 //улучшенный граф, содержит ребра с параметрами
 public class AdvancedGraph<T> extends HashMap<Integer, T> {
+    private int vertex;
     private final ArrayList<Node> nodes;
     private int edges = 0;
 
     public AdvancedGraph(int nodes) {
+        this.vertex = nodes;
         this.nodes = new ArrayList<>();
         for (int i = 0; i < nodes; i++)
             this.nodes.add(new Node(i));
@@ -44,6 +46,11 @@ public class AdvancedGraph<T> extends HashMap<Integer, T> {
         nodes.get(firstNode).addAdj(edge);
         nodes.get(secondNode).addAdj(edge);
         edges++;
+    }
+
+    //число узлов
+    public int getVertex() {
+        return vertex;
     }
 
     //число ребер
